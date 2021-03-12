@@ -6,7 +6,7 @@ const app = express();
 const https = require('https');
 
 app.get('/', (req, res) => {
-	res.send('<iframe src="/be">Hello World</iframe>');
+	res.send('<iframe src="/be" style="width: 100%; height: 100%">Hello World</iframe>');
 });
 
 function processResponseError(response) {
@@ -44,11 +44,11 @@ function _formatLocationObject(location) {
 }
 
 function _formatBusinessObject(business) {
-    return business.name + _formatLocationObject(business.location) + _formatReviewObject(business.review);
+    return '<strong>' + business.name + '</strong>' + _formatLocationObject(business.location) + _formatReviewObject(business.review) + '<hr/>';
 }
 
 function formatResponseSuccess(businesses) {
-    let response = '<ol>';
+    let response = '<ol style="margin:0; padding: 0; list-style: none; text-align:center; width: 100%; height: 100%">';
 	Object.values(businesses).map((obj) => {
         response += '<li>' + _formatBusinessObject(obj) + '</li>';
     });
