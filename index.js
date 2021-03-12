@@ -31,24 +31,26 @@ function processResponseError(response) {
 }
 
 function _formatReviewObject(review) {
-    console.log(review);
-    return review.user.name + review.text;
+    return '<figure>' + review.user.name + '<figcaption>' + review.text + '</figcaption></figure>';
 }
 
 function _formatLocationObject(location) {
-    console.log(location);
-    return location.address1 + location.address2 + location.address3 + location.city + location.zip_code + location.country + location.state;
+    return '<address>' + location.address1 +
+	(location.address2 ? '<br/>' + location.address2 : '') + 
+	'<br/>' + location.city +
+	'<br/>' + location.zip_code +
+	'<br/>' + location.country +
+	'<br/>' + location.state + '</address>';
 }
 
 function _formatBusinessObject(business) {
-    console.log(business);
     return business.name + _formatLocationObject(business.location) + _formatReviewObject(business.review);
 }
 
 function formatResponseSuccess(businesses) {
     let response = '<ol>';
 	Object.values(businesses).map((obj) => {
-        response += _formatBusinessObject(obj);
+        response += '<li>' + _formatBusinessObject(obj) + '</li>';
     });
     return response + '</ol>';
 }
