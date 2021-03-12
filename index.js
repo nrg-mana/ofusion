@@ -155,4 +155,4 @@ app.get('/be', (req, res) => {
 			console.error(`Got error: ${e.message}`);
 		});
 });
-app.listen(3000);
+app.listen(process.env.PORT);
