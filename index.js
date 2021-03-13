@@ -6,7 +6,11 @@ const app = express();
 const https = require('https');
 
 app.get('/', (req, res) => {
-	res.send('<iframe src="/be" style="width: 100%; height: 100%">Hello World</iframe>');
+
+app.get('/me', (req, res) => {
+	res.send(`<iframe width="100%" height="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/41395010&amp;auto_play=true&amp;hide_related=true&amp;buying=true&amp;sharing=true&amp;show_comments=false&amp;show_user=true&amp;show_artwork=true&amp;show_reposts=false&amp;visual=true&amp;single_active=true&amp;download=true"></iframe>
+	<script src="https://w.soundcloud.com/player/api.js"></script>
+	<script>var frame = document.querySelector('iframe'); var widget = SC.Widget(frame); widget.bind(SC.Widget.Events.FINISH, widget.play);</script>`)
 });
 
 function processResponseError(response) {
